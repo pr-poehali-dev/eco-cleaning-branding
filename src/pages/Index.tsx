@@ -20,39 +20,55 @@ interface CartItem extends Product {
 
 const Index = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [activeTab, setActiveTab] = useState<'services' | 'products' | 'blog'>('services');
+  const [activeTab, setActiveTab] = useState<'services' | 'products' | 'blog'>('products');
 
   const products: Product[] = [
     {
       id: 1,
-      name: 'Очистка вентиляции',
-      price: 15000,
-      category: 'service',
-      description: 'Профессиональная очистка вентиляционных систем с гарантией',
-      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/7dd05850-86b0-42e6-8b6b-b7f5ff8ecc85.jpg'
+      name: 'Детский набор для творчества',
+      price: 2500,
+      category: 'product',
+      description: 'Всё для развития креативности вашего ребёнка',
+      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/4389420d-a3e8-4b02-9918-d015f16731e7.jpg'
     },
     {
       id: 2,
-      name: 'Генеральная уборка',
-      price: 8000,
+      name: 'Семейная фотосессия',
+      price: 12000,
       category: 'service',
-      description: 'Комплексная уборка помещений с экологичными средствами',
-      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/4389420d-a3e8-4b02-9918-d015f16731e7.jpg'
+      description: 'Профессиональная съёмка для сохранения тёплых воспоминаний',
+      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/7dd05850-86b0-42e6-8b6b-b7f5ff8ecc85.jpg'
     },
     {
       id: 3,
-      name: 'Эко-средство для уборки',
-      price: 450,
+      name: 'Настольная игра "Лисья тропа"',
+      price: 1800,
       category: 'product',
-      description: 'Натуральное чистящее средство без химии, 500 мл',
-      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/4389420d-a3e8-4b02-9918-d015f16731e7.jpg'
+      description: 'Увлекательная игра для всей семьи на 2-6 игроков',
+      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/b558e9c3-8900-4f0e-9dbd-302946b754cc.jpg'
     },
     {
       id: 4,
-      name: 'Мойка окон',
-      price: 3500,
+      name: 'Организация праздника',
+      price: 25000,
       category: 'service',
-      description: 'Профессиональная мойка окон без разводов',
+      description: 'Полная организация детского или семейного праздника',
+      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/f261e2dc-fbdb-4561-b4a5-1dd37ef5bf6e.jpg'
+    },
+    {
+      id: 5,
+      name: 'Семейный плед "Уют"',
+      price: 3200,
+      category: 'product',
+      description: 'Мягкий плюшевый плед для тёплых семейных вечеров',
+      image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/4389420d-a3e8-4b02-9918-d015f16731e7.jpg'
+    },
+    {
+      id: 6,
+      name: 'Мастер-класс для детей',
+      price: 1500,
+      category: 'service',
+      description: 'Познавательные занятия по рисованию, лепке или конструированию',
       image: 'https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/4389420d-a3e8-4b02-9918-d015f16731e7.jpg'
     }
   ];
@@ -60,20 +76,20 @@ const Index = () => {
   const blogPosts = [
     {
       id: 1,
-      title: 'Почему важна чистка вентиляции',
-      excerpt: 'Регулярная очистка вентиляции продлевает срок службы системы и улучшает качество воздуха...',
+      title: 'Как выбрать подарок для всей семьи',
+      excerpt: 'Делимся идеями подарков, которые понравятся каждому члену семьи...',
       date: '15 ноября 2025'
     },
     {
       id: 2,
-      title: 'Экологичная уборка: мифы и реальность',
-      excerpt: 'Разбираем популярные заблуждения об экологичных чистящих средствах...',
+      title: '5 игр для семейного вечера',
+      excerpt: 'Подборка лучших настольных игр для уютных вечеров дома...',
       date: '10 ноября 2025'
     },
     {
       id: 3,
-      title: 'Как часто нужно чистить вентиляцию в офисе',
-      excerpt: 'Эксперты рекомендуют проводить профилактическую чистку не реже двух раз в год...',
+      title: 'Организация праздника: советы профи',
+      excerpt: 'Как устроить незабываемый праздник без стресса и переплат...',
       date: '5 ноября 2025'
     }
   ];
@@ -118,25 +134,25 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img 
-              src="https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/12f014b8-f8cd-4cf8-911b-7d50b8d834ad.jpg" 
-              alt="ECO DV" 
-              className="h-10 w-10 rounded-lg object-cover"
+              src="https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/b558e9c3-8900-4f0e-9dbd-302946b754cc.jpg" 
+              alt="Fox Family" 
+              className="h-14 w-14 rounded-full object-cover border-2 border-primary/20"
             />
             <div>
-              <h1 className="text-xl font-bold text-primary">ECO DV</h1>
-              <p className="text-xs text-muted-foreground">Экологичный клининг</p>
+              <h1 className="text-3xl font-bold text-primary">Fox Family</h1>
+              <p className="text-sm text-muted-foreground">Для всей семьи с любовью</p>
             </div>
           </div>
           
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="relative">
-                <Icon name="ShoppingCart" size={20} />
+              <Button variant="outline" size="icon" className="relative h-12 w-12">
+                <Icon name="ShoppingCart" size={22} />
                 {cartItemsCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                  <Badge className="absolute -top-2 -right-2 h-6 w-6 flex items-center justify-center p-0 text-xs">
                     {cartItemsCount}
                   </Badge>
                 )}
@@ -216,95 +232,100 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
-        <section className="mb-12 rounded-2xl bg-gradient-to-r from-primary/10 to-accent p-8 md:p-12">
-          <div className="max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Экологичный клининг и профессиональная очистка вентиляции
+      <main className="container mx-auto px-4 py-12">
+        <section className="mb-16 rounded-3xl bg-gradient-to-br from-primary/20 via-accent/30 to-secondary/40 p-12 md:p-16 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/20 rounded-full blur-2xl"></div>
+          <div className="max-w-3xl relative z-10">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+              Всё для вашей семьи в одном месте
             </h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Безопасные средства, профессиональное оборудование, гарантия качества
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Товары, услуги и незабываемые моменты для тех, кто ценит семейное тепло и уют
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2">
-                <Icon name="Phone" size={20} />
-                Заказать звонок
+              <Button size="lg" className="gap-2 text-lg px-8 py-6">
+                <Icon name="Heart" size={22} />
+                Смотреть каталог
               </Button>
-              <Button size="lg" variant="outline">
-                Узнать больше
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+                О нас
               </Button>
             </div>
           </div>
         </section>
 
-        <div className="flex gap-2 mb-8 border-b">
-          <Button 
-            variant={activeTab === 'services' ? 'default' : 'ghost'}
-            onClick={() => setActiveTab('services')}
-            className="rounded-b-none"
-          >
-            Услуги
-          </Button>
+        <div className="flex gap-3 mb-10 border-b pb-1">
           <Button 
             variant={activeTab === 'products' ? 'default' : 'ghost'}
             onClick={() => setActiveTab('products')}
-            className="rounded-b-none"
+            className="text-lg px-6"
           >
             Товары
           </Button>
           <Button 
+            variant={activeTab === 'services' ? 'default' : 'ghost'}
+            onClick={() => setActiveTab('services')}
+            className="text-lg px-6"
+          >
+            Услуги
+          </Button>
+          <Button 
             variant={activeTab === 'blog' ? 'default' : 'ghost'}
             onClick={() => setActiveTab('blog')}
-            className="rounded-b-none"
+            className="text-lg px-6"
           >
             Блог
           </Button>
         </div>
 
         {activeTab === 'blog' ? (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map(post => (
-              <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer">
+              <Card key={post.id} className="hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1">
                 <CardHeader>
-                  <CardTitle className="text-xl">{post.title}</CardTitle>
+                  <CardTitle className="text-2xl">{post.title}</CardTitle>
                   <CardDescription>{post.date}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{post.excerpt}</p>
+                  <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
                 </CardContent>
                 <CardFooter>
                   <Button variant="ghost" className="gap-2">
                     Читать далее
-                    <Icon name="ArrowRight" size={16} />
+                    <Icon name="ArrowRight" size={18} />
                   </Button>
                 </CardFooter>
               </Card>
             ))}
           </div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map(product => (
-              <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-48 object-cover"
-                />
+              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="relative">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-56 object-cover"
+                  />
+                  <Badge 
+                    variant={product.category === 'service' ? 'default' : 'secondary'}
+                    className="absolute top-3 right-3"
+                  >
+                    {product.category === 'service' ? 'Услуга' : 'Товар'}
+                  </Badge>
+                </div>
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-2">
-                    <CardTitle className="text-xl">{product.name}</CardTitle>
-                    <Badge variant={product.category === 'service' ? 'default' : 'secondary'}>
-                      {product.category === 'service' ? 'Услуга' : 'Товар'}
-                    </Badge>
-                  </div>
-                  <CardDescription>{product.description}</CardDescription>
+                  <CardTitle className="text-xl">{product.name}</CardTitle>
+                  <CardDescription className="leading-relaxed">{product.description}</CardDescription>
                 </CardHeader>
-                <CardFooter className="flex justify-between items-center">
+                <CardFooter className="flex justify-between items-center pt-4">
                   <span className="text-2xl font-bold text-primary">
                     {product.price.toLocaleString('ru-RU')} ₽
                   </span>
                   <Button onClick={() => addToCart(product)} className="gap-2">
-                    <Icon name="ShoppingCart" size={16} />
+                    <Icon name="ShoppingCart" size={18} />
                     В корзину
                   </Button>
                 </CardFooter>
@@ -314,35 +335,35 @@ const Index = () => {
         )}
       </main>
 
-      <footer className="border-t mt-16 py-8 bg-muted/30">
+      <footer className="border-t mt-20 py-12 bg-muted/20">
         <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-10 md:grid-cols-3">
             <div>
-              <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <Icon name="Phone" size={20} />
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <Icon name="Phone" size={24} />
                 Контакты
               </h3>
-              <p className="text-muted-foreground">+7 (XXX) XXX-XX-XX</p>
-              <p className="text-muted-foreground">info@ecodv.ru</p>
+              <p className="text-muted-foreground text-lg">+7 (999) 123-45-67</p>
+              <p className="text-muted-foreground text-lg">hello@foxfamily.ru</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <Icon name="MapPin" size={20} />
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <Icon name="MapPin" size={24} />
                 Адрес
               </h3>
-              <p className="text-muted-foreground">г. Москва, ул. Примерная, д. 1</p>
+              <p className="text-muted-foreground text-lg">г. Москва, ул. Семейная, д. 7</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <Icon name="Clock" size={20} />
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <Icon name="Clock" size={24} />
                 Режим работы
               </h3>
-              <p className="text-muted-foreground">Пн-Пт: 9:00 - 18:00</p>
-              <p className="text-muted-foreground">Сб-Вс: выходной</p>
+              <p className="text-muted-foreground text-lg">Пн-Пт: 10:00 - 20:00</p>
+              <p className="text-muted-foreground text-lg">Сб-Вс: 11:00 - 18:00</p>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            © 2025 ECO DV. Все права защищены.
+          <div className="mt-12 pt-8 border-t text-center text-muted-foreground">
+            <p className="text-lg">© 2025 Fox Family. Создано с любовью для вашей семьи 🦊</p>
           </div>
         </div>
       </footer>
