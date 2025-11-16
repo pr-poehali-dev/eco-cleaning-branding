@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
+import FoxLogo from '@/components/FoxLogo';
 
 interface Product {
   id: number;
@@ -135,17 +137,13 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img 
-              src="https://cdn.poehali.dev/projects/e808d3c4-2b7a-4889-b20a-c96704be1db3/files/b558e9c3-8900-4f0e-9dbd-302946b754cc.jpg" 
-              alt="Fox Family" 
-              className="h-14 w-14 rounded-full object-cover border-2 border-primary/20"
-            />
+          <Link to="/logo" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <FoxLogo variant="icon" size={56} />
             <div>
               <h1 className="text-3xl font-bold text-primary">Fox Family</h1>
               <p className="text-sm text-muted-foreground">Для всей семьи с любовью</p>
             </div>
-          </div>
+          </Link>
           
           <Sheet>
             <SheetTrigger asChild>
